@@ -33,7 +33,7 @@
             <h1>F & N</h1>
             <p>Akan melangsungkan resepsi pernikahan dalam:</p>
             <div class="simply-countdown"></div>
-            <a href="#undangan" class="btn btn-lg mt-4">Lihat Undangan</a>
+            <a href="#undangan" class="btn btn-lg mt-4" onclick="enabledScroll()">Lihat Undangan</a>
         </main>
     </section>
 
@@ -239,8 +239,10 @@
             </div>
             <div class="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 row-cols-2 justify-content-center">
                 <div class="col mt-3">
-                    <a href="img/gallery/raffi.jpeg" data-toggle="lightbox" data-caption="Sandi & Nofa 1" data-gallery="my-gallery">
-                        <img src="img/gallery/thumbnail/raffi.jpeg" alt="Sandi & Nofa 1" class="img-fluid w-100 rounded">
+                    <a href="img/gallery/raffi.jpeg" data-toggle="lightbox" data-caption="Sandi & Nofa 1"
+                        data-gallery="my-gallery">
+                        <img src="img/gallery/thumbnail/raffi.jpeg" alt="Sandi & Nofa 1"
+                            class="img-fluid w-100 rounded">
                     </a>
                 </div>
                 <div class="col mt-3">
@@ -285,6 +287,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 
+    <!-- CountDown -->
     <script>
         simplyCountdown(".simply-countdown", {
             year: 2025, // Target year (required)
@@ -314,6 +317,32 @@
             stickyTop.style.overflow = 'hidden';
         })
 
+    </script>
+
+    <script>
+        const rootElement = document.querySelector(":root");
+
+        function disableScroll() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+            window.onscroll = function () {
+                window.scrollTo(scrollTop, scrollLeft);
+            }
+            rootElement.style.scrollBehavior = 'auto';
+            rootElement.style.overflow = 'hidden';            
+        }
+
+        function enabledScroll() {
+            window.onscroll = function () { }
+            rootElement.style.scrollBehavior = 'smooth';
+            rootElement.style.overflow = '';     
+            localStorage.setItem('opened', 'true')
+        }
+
+        if (!localStorage.getItem('opened')) {
+            disableScroll();
+        }
     </script>
 
 </body>
