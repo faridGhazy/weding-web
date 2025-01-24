@@ -297,7 +297,7 @@
                 <div class="col-12">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama">
+                        <input type="text" class="form-control" id="nama" name="nama" disabled>
                     </div>
                 </div>
                 <div class="col-12">
@@ -502,6 +502,8 @@
 
         const namaContainer = document.querySelector('.hero h4 span');
         namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+
+        document.querySelector("#nama").value = nama;
     </script>
 </body>
 
